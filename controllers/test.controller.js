@@ -1,5 +1,6 @@
 const answerModel = require('../openAI/generateAnswer');
 const parser = require('../parser/parser');
+const {QUESTION_TYPE} = require('./qestion-type');
 
 exports.getQuestions = async (req, res) => {
   try {
@@ -8,9 +9,9 @@ exports.getQuestions = async (req, res) => {
     const category = req.params.category;
     const difficultyLevel = req.params.level;
     const amountOfQuestion = req.params.number * 1; // type number
-    const questionType = (req.params.type ?? QUESTION_TYPE.MULTIPLE) * 1; // type number
+    const questionType = (req.params.type) ? parseInt(req.params.type) : QUESTION_TYPE.MULTIPLE_CHOICE; 
     
-    //console.log("controller getQuestions: ", category, difficultyLevel, questionType);
+    console.log("controller getQuestions: ", category, difficultyLevel, questionType);
     const completion = await answerModel.generateAnswer(category, difficultyLevel, questionType, amountOfQuestion);
     // received data from OpenAI
     console.log(completion.data.choices[0]);
