@@ -1,0 +1,17 @@
+###
+//fetch data from OpenAI : 
+// category: javascript, 
+// difficulty: "intermediate", 
+// number of questions: 5, 
+// questionType: 2(multiple choice)
+GET http://localhost:4000/api/v1/quiz/javascript/intermediate/5/2
+Content-Type: application/json
+
+###
+//fetch data from OpenAI : 
+// category: javascript, 
+// difficulty: "beginner", 
+// number of questions: 5, 
+//questionType: 1(true or false)
+GET http://localhost:4000/api/v1/quiz/javascript/beginner/5/1
+Content-Type: application/json
